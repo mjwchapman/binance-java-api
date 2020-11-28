@@ -3,6 +3,7 @@ package com.binance.api.client;
 import com.binance.api.client.domain.account.Account;
 import com.binance.api.client.domain.account.DepositAddress;
 import com.binance.api.client.domain.account.DepositHistory;
+import com.binance.api.client.domain.account.NewOcoOrderResponse;
 import com.binance.api.client.domain.account.NewOrder;
 import com.binance.api.client.domain.account.NewOrderResponse;
 import com.binance.api.client.domain.account.Order;
@@ -155,6 +156,8 @@ public interface BinanceApiRestClient {
   List<BookTicker> getBookTickers();
 
   // Account endpoints
+
+  NewOcoOrderResponse newOcoOrder(NewOrder order);
 
   /**
    * Send in a new order.

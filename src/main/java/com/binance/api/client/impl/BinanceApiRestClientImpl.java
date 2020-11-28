@@ -111,6 +111,22 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
   }
 
   @Override
+  public NewOcoOrderResponse newOcoOrder(NewOrder order) {
+    return executeSync(binanceApiService.newOcoOrder(
+      order.getSymbol(),
+      order.getSide(),
+      order.getQuantity(),
+      order.getPrice(),
+      order.getNewClientOrderId(),
+      order.getStopPrice(),
+      order.getStopPrice(),
+      order.getTimeInForce(),
+      order.getNewOrderRespType(),
+      order.getRecvWindow(),
+      order.getTimestamp()));
+  }
+
+  @Override
   public NewOrderResponse newOrder(NewOrder order) {
     final Call<NewOrderResponse> call;
     if (order.getQuoteOrderQty() == null) {
@@ -223,4 +239,5 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
   public void closeUserDataStream(String listenKey) {
     executeSync(binanceApiService.closeAliveUserDataStream(listenKey));
   }
+
 }
