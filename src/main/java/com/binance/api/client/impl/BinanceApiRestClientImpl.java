@@ -118,6 +118,8 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
       order.getQuantity(),
       order.getPrice(),
       order.getNewClientOrderId(),
+      order.getNewClientOrderId() + "-make",
+      order.getNewClientOrderId() + "-stop",
       order.getStopPrice(),
       order.getStopPrice(),
       order.getTimeInForce(),
