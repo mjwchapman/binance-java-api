@@ -78,6 +78,7 @@ public class NewOrder {
    */
   private long timestamp;
 
+
   /**
    * Creates a new order with all required parameters.
    */
@@ -98,6 +99,10 @@ public class NewOrder {
   public NewOrder(String symbol, OrderSide side, OrderType type, TimeInForce timeInForce, String quantity, String price) {
     this(symbol, side, type, timeInForce, quantity);
     this.price = price;
+  }
+
+  public NewOrder(String symbol, OrderSide side, OrderType type, String quantity) {
+    this(symbol, side, type, null, quantity);
   }
 
   public String getSymbol() {
