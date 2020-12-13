@@ -86,7 +86,7 @@ public interface BinanceApiService {
 
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @POST("/api/v3/order/oco")
-    Call<NewOcoOrderResponse> newOcoOrder(
+    Call<OcoOrderResponse> newOcoOrder(
             @Query("symbol") String symbol,
             @Query("side") OrderSide side,
             @Query("quantity") String quantity,
@@ -136,6 +136,13 @@ public interface BinanceApiService {
     Call<CancelOrderResponse> cancelOrder(@Query("symbol") String symbol, @Query("orderId") Long orderId,
                                           @Query("origClientOrderId") String origClientOrderId, @Query("newClientOrderId") String newClientOrderId,
                                           @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @DELETE("/api/v3/orderList")
+    Call<OcoOrderResponse> cancelOcoOrder(
+            @Query("symbol") String symbol,
+            @Query("listClientOrderId") String listClientOrderId,
+            @Query("timestamp") Long timestamp);
 
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @GET("/api/v3/openOrders")

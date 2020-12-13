@@ -111,7 +111,7 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
   }
 
   @Override
-  public NewOcoOrderResponse newOcoOrder(NewOrder order) {
+  public OcoOrderResponse newOcoOrder(NewOrder order) {
     return executeSync(binanceApiService.newOcoOrder(
       order.getSymbol(),
       order.getSide(),
@@ -167,6 +167,14 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
         cancelOrderRequest.getOrderId(), cancelOrderRequest.getOrigClientOrderId(), cancelOrderRequest.getNewClientOrderId(),
         cancelOrderRequest.getRecvWindow(), cancelOrderRequest.getTimestamp()));
   }
+
+  @Override
+  public OcoOrderResponse cancelOcoOrder(CancelOrderRequest cancelOrderRequest) {
+      return executeSync(binanceApiService.cancelOcoOrder(
+              cancelOrderRequest.getSymbol(),
+              cancelOrderRequest.getOrigClientOrderId(),
+              cancelOrderRequest.getTimestamp()));
+    }
 
   @Override
   public List<Order> getOpenOrders(OrderRequest orderRequest) {
